@@ -1,1 +1,5 @@
 streamlit
+supabase
+streamlit-url-fragment
+pyjwt
+streamlit-js
