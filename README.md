@@ -1,12 +1,11 @@
 <h1 align="center">Supabase-Streamlit Google OAuth</h1>
 <p align="center">
-  <img src="https://img.shields.io/github/license/bhargavmodak/streamlit-google-oauth" alt="License">
   <img src="https://img.shields.io/github/issues/bhargavmodak/streamlit-google-oauth" alt="Issues">
   <img src="https://img.shields.io/github/forks/bhargavmodak/streamlit-google-oauth" alt="Forks">
   <img src="https://img.shields.io/github/stars/bhargavmodak/streamlit-google-oauth" alt="Stars">
 </p>
 <p align="center">
-  <a href="https://blank-app-template.streamlit.app/">
+  <a href="https://bhargav-supa-stgouth-demo.streamlit.app/">
     <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit">
   </a>
 </p>
