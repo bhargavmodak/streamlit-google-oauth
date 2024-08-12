@@ -1,7 +1,7 @@
 # Streamlit
 #  .streamlit/ folder is used for configuration of Streamlit apps.
 #  It is created by Streamlit and should not be added to version control.
-.streamlit/
+.streamlit/secrets.toml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
