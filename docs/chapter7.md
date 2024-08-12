@@ -25,7 +25,7 @@ from sample.utils import set_sidebar
 from streamlit_extras.switch_page_button import switch_page
 
 if "user" not in st.session_state:
-    switch_page("app")
+    switch_page("streamlit_app")
 else:
     set_sidebar(st.session_state.user)
 
@@ -42,7 +42,7 @@ def set_sidebar(user: dict):
     # Put in sidebar
     st.sidebar.write(f"Welcome {user['full_name']}")
     st.sidebar.image(user["avatar_url"], width=100)
-    st.sidebar.page_link("app.py", label="Home")
+    st.sidebar.page_link("streamlit_app.py", label="Home")
     st.sidebar.page_link("pages/other.py", label="Example Page")
     with st.sidebar:
         show_logout(st_ls)

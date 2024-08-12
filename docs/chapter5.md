@@ -1,14 +1,14 @@
 # 📖 Chapter 5: The Home Route
 
-In the previous chapter we stored the `g_session` object in the local storage in the `/auth` route. Since we wanted the home route ([app.py](../app.py), or `/`) to be blind as to whether the user has logged in just now or was already in local storage, we switched to the `app` route after storing the `g_session` object in the local storage.
+In the previous chapter we stored the `g_session` object in the local storage in the `/auth` route. Since we wanted the home route ([streamlit_app.py](../streamlit_app.py), or `/`) to be blind as to whether the user has logged in just now or was already in local storage, we switched to the `app` route after storing the `g_session` object in the local storage.
 
-In this chapter, we will check the local storage for the `g_session` object in the home route [app.py](../app.py) and consider the user logged in if it is present.
+In this chapter, we will check the local storage for the `g_session` object in the home route [streamlit_app.py](../streamlit_app.py) and consider the user logged in if it is present.
 
 ## Getting the User Object from Supabase
 
 As already seen in [Chapter 3 -> How to use the session object to authenticate the user](chapter3.md/#how-to-use-the-session-object-to-authenticate-the-user), we can use the `supabase.auth.set_session()` method to authenticate the user using the `access_token` and `refresh_token` pair. This method sets the session for the user and allows them to access Supabase resources.
 
-`app.py` is very simple, you can see the main function below:
+`streamlit_app.py` is very simple, you can see the main function below:
 
 ```python
 # Main program after login

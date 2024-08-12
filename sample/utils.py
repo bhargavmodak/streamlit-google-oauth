@@ -46,7 +46,7 @@ def set_sidebar(user: dict):
     # Put in sidebar
     st.sidebar.write(f"Welcome {user['full_name']}")
     st.sidebar.image(user["avatar_url"], width=100)
-    st.sidebar.page_link("app.py", label="Home")
+    st.sidebar.page_link("streamlit_app.py", label="Home")
     st.sidebar.page_link("pages/other.py", label="Example Page")
     with st.sidebar:
         show_logout(st_ls)

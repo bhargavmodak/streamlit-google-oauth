@@ -84,7 +84,7 @@ You might also want to read the other docs to understand how the app works.
 #### 5. Run the Streamlit app
 
    ```bash
-   $ streamlit run app.py
+   $ streamlit run streamlit_app.py
    ```
    
 ## 🛠️ Project Maintainer

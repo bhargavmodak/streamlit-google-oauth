@@ -18,7 +18,7 @@ current_fragment = get_fragment()
 st.session_state.g_session = st_ls.get("g_session")
 time.sleep(0.25)
 if st.session_state.g_session is not None and len(st.session_state.g_session) > 0:
-    switch_page("app")
+    switch_page("streamlit_app")
 
 st.info("Checking your Google session...")
 
@@ -30,7 +30,7 @@ if current_fragment is not None:
         st.error("Error:", g_session["error"])
         st.info("Redirecting to login page...")
         time.sleep(1)
-        switch_page("app")
+        switch_page("streamlit_app")
     else:
         if g_session is not None:
             st_ls.set("g_session", g_session)

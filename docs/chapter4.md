@@ -44,7 +44,7 @@ If you find a way to avoid reruns, please refer to the [Contributing](contributi
 
 ## Using the st_local_storage.py module in the /auth route
 
-The home route `/` [app.py](../app.py) must be blind as to whether user has logged in just now or was already in local storage. So, we will use the `st_local_storage.py` module in the `/auth` route to store the session object in the local storage.
+The home route `/` [streamlit_app.py](../streamlit_app.py) must be blind as to whether user has logged in just now or was already in local storage. So, we will use the `st_local_storage.py` module in the `/auth` route to store the session object in the local storage.
 
 This way, whenever the home route `/` is accessed, it will check the local storage for the session object. If it is present, the user is considered logged in. If not, the user is considered logged out.
 
@@ -65,7 +65,7 @@ if current_fragment is not None:
         st.error("Error:", g_session["error"])
         st.info("Redirecting to login page...")
         time.sleep(1)
-        switch_page("app")
+        switch_page("streamlit_app")
     else:
         if g_session is not None:
             st_ls.set("g_session", g_session)
@@ -80,16 +80,16 @@ Since streamlit will rerun several times after `st_ls.set("g_session", g_session
 st.session_state.g_session = st_ls.get("g_session")
 time.sleep(0.25)
 if st.session_state.g_session is not None and len(st.session_state.g_session) > 0:
-    switch_page("app")
+    switch_page("streamlit_app")
 ```
 
 The combination of the above code snippets results in [auth.py](../pages/auth.py).
 
 ## Why switch_page() instead of nav_to() like we used in Chapter 2?
 
-`nav_to()` refreshes the entire page, but we do not want to redirect the user **again** after they have just been redirected twice from our app to Google and back. So, we use `switch_page()` to navigate to the [app.py](../app.py) home route `/` without refreshing the page.
+`nav_to()` refreshes the entire page, but we do not want to redirect the user **again** after they have just been redirected twice from our app to Google and back. So, we use `switch_page()` to navigate to the [streamlit_app.py](../streamlit_app.py) home route `/` without refreshing the page.
 
-Now, in the [app.py](../app.py) home route `/`, we can check the local storage for the session object and consider the user logged in if it is present. We will implement this in the next chapter.
+Now, in the [streamlit_app.py](../streamlit_app.py) home route `/`, we can check the local storage for the session object and consider the user logged in if it is present. We will implement this in the next chapter.
 
 ---
 
