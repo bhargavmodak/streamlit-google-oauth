@@ -12,7 +12,7 @@ def return_google_login_link(supabase):
             }
         )
 
-        return data.url
+        return data.url + "&output=embed"
     except Exception as e:
         st.write("Error:", e)
 
