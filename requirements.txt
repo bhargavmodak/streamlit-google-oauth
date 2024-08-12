@@ -1,5 +1,5 @@
 streamlit
-supabase
-streamlit-url-fragment
-pyjwt
+streamlit-extras
 streamlit-js
+streamlit-url-fragment
+supabase

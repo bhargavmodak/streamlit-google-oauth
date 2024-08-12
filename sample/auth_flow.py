@@ -25,11 +25,27 @@ def show_login(supabase):
         nav_to(url)
 
 
-# Function to show logout button
-def show_logout(st_ls):
-    if st.button("Logout"):
+# Function to authenticate the user
+def authenticate_user(supabase, g_session: dict, st_ls):
+    if g_session is not None:
+        access_token = g_session["access_token"]
+        refresh_token = g_session["refresh_token"]
         try:
-            st.session_state.user = None
-            st_ls.delete("token")
-        except:
-            st.write("Error logging out.")
+            response = supabase.auth.set_session(
+                access_token=access_token, refresh_token=refresh_token
+            )
+            return response.user
+        except Exception as e:
+            if type(e).__name__ == "AuthApiError":
+                if e.message == "Invalid Refresh Token: Already Used":
+                    st.error("The refresh token was already used. Please login again.")
+                elif e.message == "User from sub claim in JWT does not exist":
+                    st.error("The access token was messed with. Please login again.")
+                else:
+                    st.error("Error:", e)
+                st_ls.delete("g_session")
+                st.info("Logging out...")
+                st.session_state.clear()
+            else:
+                st.write("Error:", e)
+            return None

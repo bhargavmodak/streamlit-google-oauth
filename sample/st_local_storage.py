@@ -47,7 +47,7 @@ class StLocalStorage:
             st.session_state["_ls_unique_keys"][key] = str(uuid.uuid4())
         code = f"""
         // The UUID changes on save, which causes this to rerun and update
-        return localStorage.getItem('{KEY_PREFIX + key}');
+        return JSON.parse(localStorage.getItem('{KEY_PREFIX + key}'));
         """
         with self._container:
             result = st_js(code, key=st.session_state["_ls_unique_keys"][key])
@@ -61,7 +61,7 @@ class StLocalStorage:
         st.session_state["_ls_unique_keys"][key] = str(uuid.uuid4())
         code = f"""
         console.debug('setting {key} to local storage');
-        localStorage.setItem('{KEY_PREFIX + key}', {value});
+        localStorage.setItem('{KEY_PREFIX + key}', JSON.stringify({value}));
         """
         with self._container:
             return st_js(code, key=st.session_state["_ls_unique_keys"][key] + "_set")
@@ -69,7 +69,6 @@ class StLocalStorage:
     def __delitem__(self, key: str) -> None:
         if key not in st.session_state["_ls_unique_keys"]:
             st.session_state["_ls_unique_keys"][key] = str(uuid.uuid4())
-        st.session_state["_ls_unique_keys"][key] = str(uuid.uuid4())
         code = f"localStorage.removeItem('{KEY_PREFIX + key}');"
         with self._container:
             return st_js(code, key=st.session_state["_ls_unique_keys"][key] + "_del")

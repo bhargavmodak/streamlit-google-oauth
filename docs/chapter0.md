@@ -1,4 +1,4 @@
-# Chapter 0: Previous Work
+# 📖 Chapter 0: Previous Work
 
 There are some resources to look at if you have chosen the Streamlit-Supbase stack. Here are some of them:
 
@@ -19,6 +19,7 @@ There are some resources to look at if you have chosen the Streamlit-Supbase sta
 ## Google OAuth in Streamlit
 
 Supabase's [Python Client](https://supabase.com/docs/reference/python/introduction) provides the [Sign in user through OAuth](https://supabase.com/docs/reference/python/auth-signinwithoauth), however, there is very litte detail as to how it's supposed to work. The link to [third party providers](https://supabase.com/docs/guides/auth#providers) leads you to [Login With Google](https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=platform&platform=web&queryGroups=environment&environment=client&queryGroups=framework&framework=express) which has guides for various clients, but not for Python.
+<sub> As of 10-08-2021 .</sub>
 
 ![alt text](assets/image.png)
 
@@ -52,3 +53,6 @@ There is no direct way to use local storage in Streamlit. However, there is a di
 
 I have not explored using cookies in Streamlit yet, but it is a possible solution to persist the token pair after the user logs in. [Streamlit cookies - Which package to use? So many of them?](https://discuss.streamlit.io/t/streamlit-cookies-which-package-to-use-so-many-of-them/50500/1) is a discussion that might help.
 
+---
+
+[Chapter 1: Prerequisites for Supabase and Streamlit](chapter1.md) ⇨
