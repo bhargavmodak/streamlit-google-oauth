@@ -46,7 +46,8 @@ This demo app prevents the token pair from being exposed indefinitely, and also 
 ## 🚀 Run this project on your own machine
 
 <!-- Create note -->
-> **Note:** This project uses environment variables to store sensitive information. Please read [Chapter 1](/docs/chapter1.md) to learn how to set up Streamlit secrets
+> [!IMPORTANT]
+> This project uses environment variables to store sensitive information. Please read [Chapter 1](/docs/chapter1.md) to learn how to set up Streamlit secrets.
 
 #### 1. Clone the repository
 
