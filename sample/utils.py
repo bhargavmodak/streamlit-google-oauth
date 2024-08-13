@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_url_fragment import get_fragment
-import time
+from streamlit_js import st_js
 import sample.st_local_storage as st_local_storage
 
 st_ls = st_local_storage.StLocalStorage()
@@ -8,12 +8,9 @@ st_ls = st_local_storage.StLocalStorage()
 
 # Function to navigate to a URL
 def nav_to(url):
-    nav_script = """
-        <meta http-equiv="refresh" content="0; url='%s'">
-    """ % (
-        url
-    )
-    st.write(nav_script, unsafe_allow_html=True)
+    js = f'window.open("{url}", "_blank");'
+    st_js(js, key="nav_to")
+    st.stop()
 
 
 # Function to get the Google session from the URL fragment

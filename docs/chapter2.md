@@ -46,7 +46,7 @@ However, this doesn't work in production. [Franky1 explains why:](https://discus
 
 > What happens when webbrowser is used? A browser is started on the computer on which the python application is running. But there is no browser on streamlit cloud and even if there was, it would be the wrong computer.
 
-[Ultimately, the solution](https://discuss.streamlit.io/t/programmatically-send-user-to-a-web-page-with-no-click/21904/7) is to use simple HTML like this:
+[Another solution by user Adamih](https://discuss.streamlit.io/t/programmatically-send-user-to-a-web-page-with-no-click/21904/7) is to use simple HTML like this:
 
 ```python
 def nav_to(url):
@@ -55,15 +55,29 @@ def nav_to(url):
     """ % (url)
     st.write(nav_script, unsafe_allow_html=True)
 ```
-Check [utils.py](../sample/utils.py) for the implementation.
 
-Note: There's another method for opening in a new tab, if you prefer that:
+This solution does work for some websites, but not for all. For example, it doesn't work for Google OAuth. This is because Streamlit Community Cloud wraps the app in an iframe, and Google doesn't allow its login page to be opened in an iframe.
+
+[There is an active issue on the Streamlit GitHub repository regarding this. (7123)↗](https://github.com/streamlit/streamlit/issues/7123)
+
+In the same thread, [Vince_Fleming suggests using JavaScript](https://discuss.streamlit.io/t/programmatically-send-user-to-a-web-page-with-no-click/21904/10) to open the URL in a new tab. This is the solution we will use in this template.
 
 ```python
 def nav_to(url):
     js = f'window.open("{url}", "_blank").then(r => window.parent.location.href);'
     st_javascript(js)
 ```
+However, the javascript console says that `window.open().then()` is not a function. So, we can use the code below instead.
+
+```python
+def nav_to(url):
+    js = f'window.open("{url}", "_blank");'
+    st_javascript(js)
+```
+
+Check [utils.py](../sample/utils.py) for the implementation.
+
+There's nothing that can be done about the already opened tab, it has to be closed manually. Submit feedback at the issue mentioned above to help the Streamlit team improve the platform.
 
 ## Redirection from Google
 

@@ -16,6 +16,8 @@ An example of how to use Google OAuth with Supabase and Streamlit.
 
 There is relatively little information on how to use Google OAuth with Supabase and Streamlit, I decided to create a simple template that demonstrates how to use Google OAuth with Supabase and Streamlit.
 
+Submit Feedback for Streamlit Auth improvements [at their Feedback Request ↗](https://github.com/streamlit/streamlit/issues/8518).
+
 ## 🧑‍🔬 How does it work?
 
 ### ↝ Pre-requisites
@@ -26,6 +28,8 @@ There is relatively little information on how to use Google OAuth with Supabase 
 ### ↝ TLDR
 
 Supabase's [Python Client](https://supabase.com/docs/reference/python/introduction) provides the [Sign in user through OAuth](https://supabase.com/docs/reference/python/auth-signinwithoauth) method to authenticate users using OAuth providers like Google, but doesn't directly open the OAuth provider's login page, and even when manually opened, returns the token pair in the [URL Fragement](https://developer.mozilla.org/en-US/docs/Web/API/URL/hash).
+
+Redirecting to the OAuth provider's login page within the streamlit community cloud iframe environment is an open issue in Streamlit. [Check it out here ↗](https://github.com/streamlit/streamlit/issues/7123)
 
 This demo app prevents the token pair from being exposed indefinitely, and also use local storage to persist the token pair, by using [streamlit-js.] Then it uses the token pair to set session in Supabase, and uses the session to fetch user data.
 
