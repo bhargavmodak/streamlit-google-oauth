@@ -12,13 +12,17 @@ def return_google_login_link(supabase):
             }
         )
 
-        return data.url + "&output=embed"
+        return data.url
     except Exception as e:
         st.write("Error:", e)
 
 
 # Function to show login button
 def show_login(supabase):
+    st.write(
+        "A new tab will open to authenticate with Google. You may need to allow pop-ups."
+    )
+    st.write("Please close this tab after logging in.")
     login_button = st.button("Login with Google")
     if login_button:
         url = return_google_login_link(supabase)

@@ -10,7 +10,6 @@ st_ls = st_local_storage.StLocalStorage()
 def nav_to(url):
     js = f'window.open("{url}", "_blank");'
     st_js(js, key="nav_to")
-    st.stop()
 
 
 # Function to get the Google session from the URL fragment
@@ -34,7 +33,7 @@ def clear_fragment():
 # Function to show logout button
 def show_logout(st_ls):
     if st.button("Logout"):
-        st_ls.delete("g_session")
+        print(st_ls.delete("g_session"))
         st.info("Logging out...")
         st.session_state.clear()
 
