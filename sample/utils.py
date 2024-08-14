@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_url_fragment import get_fragment
+import time
 from streamlit_js import st_js
 import sample.st_local_storage as st_local_storage
 

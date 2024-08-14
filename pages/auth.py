@@ -16,7 +16,7 @@ current_fragment = get_fragment()
 
 # Check if the session is already stored in the local storage
 st.session_state.g_session = st_ls.get("g_session")
-time.sleep(0.25)
+time.sleep(0.5)
 if st.session_state.g_session is not None and len(st.session_state.g_session) > 0:
     switch_page("streamlit_app")
 
